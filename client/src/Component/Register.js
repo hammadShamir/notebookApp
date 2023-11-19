@@ -36,7 +36,7 @@ const Register = () => {
         }),
         onSubmit: async (values) => {
             const { first_name, last_name, email, password } = values;
-            const response = await fetch("http://localhost:8000/api/auth/createuser", {
+            const response = await fetch("https://notebook-app-chi.vercel.app/api/auth/createuser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
