@@ -5,7 +5,6 @@ export const NoteContext = createContext();
 
 const NotesState = (props) => {
     const navigate = useNavigate();
-    const host = 'http://localhost:8000/'
     const [notes, setNotes] = useState();
     const [noteData, setNoteData] = useState({
         title: "",
@@ -14,7 +13,7 @@ const NotesState = (props) => {
     const token = localStorage.getItem("token");
     // FETCH ALL NOTES 
     const getNotes = async () => {
-        const response = await fetch(`${host}api/notes/fetchallnotes`, {
+        const response = await fetch(`${process.env.REACT_APP_HOST}/api/notes/fetchallnotes`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -27,7 +26,7 @@ const NotesState = (props) => {
 
     // ADD NEW NOTE
     const addNote = async (data) => {
-        const response = await fetch(`${host}api/notes/addnotes`, {
+        const response = await fetch(`${process.env.REACT_APP_HOST}/api/notes/addnotes`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -44,7 +43,7 @@ const NotesState = (props) => {
     }
     // Update NOTE
     const updateNote = async (id, title, description) => {
-        await fetch(`${host}api/notes/updatenotes/${id}`, {
+        await fetch(`${process.env.REACT_APP_HOST}/api/notes/updatenotes/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -67,7 +66,7 @@ const NotesState = (props) => {
     }
     // DELETE NOTE
     const deleteNote = async (id) => {
-        await fetch(`${host}api/notes/deletenotes/${id}`, {
+        await fetch(`${process.env.REACT_APP_HOST}/api/notes/deletenotes/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",

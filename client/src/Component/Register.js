@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Container, Typography, TextField, Button, Grid, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
@@ -36,7 +36,7 @@ const Register = () => {
         }),
         onSubmit: async (values) => {
             const { first_name, last_name, email, password } = values;
-            const response = await fetch("https://notebook-app-chi.vercel.app/api/auth/createuser", {
+            const response = await fetch(`${process.env.REACT_APP_HOST}/api/auth/createuser`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
